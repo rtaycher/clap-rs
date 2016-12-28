@@ -154,12 +154,10 @@ impl<'a, 'b> App<'a, 'b> {
     /// Sets a string of author(s) that will be displayed to the user when they
     /// request the help information with `--help` or `-h`.
     ///
-    /// **Pro-tip:** Use `clap`s convenience macro [`crate_authors!`] to automatically set your
+    /// **Pro-tip:** Use `clap`s convenience macro [`crate_authors!`] to set your
     /// application's author(s) to the same thing as your crate at compile time. See the [`examples/`]
-    /// directory for more information
+    /// directory for more information.
     ///
-    /// See the [`examples/`]
-    /// directory for more information
     ///
     /// # Examples
     ///
@@ -202,6 +200,10 @@ impl<'a, 'b> App<'a, 'b> {
     /// Sets a string describing what the program does. This will be displayed when displaying help
     /// information.
     ///
+    /// **Pro-tip:** Use `clap`s convenience macro [`crate_description!`] to set your
+    /// application's description to the same thing as your crate at compile time. See the [`examples/`]
+    /// directory for more information.
+    ///
     /// # Examples
     ///
     /// ```no_run
@@ -210,6 +212,9 @@ impl<'a, 'b> App<'a, 'b> {
     ///     .about("Does really amazing things to great people")
     /// # ;
     /// ```
+    /// [`crate_description!`]: ./macro.crate_description!.html
+    /// [`examples/`]: https://github.com/kbknapp/clap-rs/tree/master/examples
+
     pub fn about<S: Into<&'b str>>(mut self, about: S) -> Self {
         self.p.meta.about = Some(about.into());
         self
@@ -252,7 +257,7 @@ impl<'a, 'b> App<'a, 'b> {
     /// Sets a string of the version number to be displayed when displaying version or help
     /// information.
     ///
-    /// **Pro-tip:** Use `clap`s convenience macro [`crate_version!`] to automatically set your
+    /// **Pro-tip:** Use `clap`s convenience macro [`crate_version!`] to set your
     /// application's version to the same thing as your crate at compile time. See the [`examples/`]
     /// directory for more information
     ///

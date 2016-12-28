@@ -448,6 +448,27 @@ macro_rules! crate_authors {
     };
 }
 
+/// Allows you to pull the description from your Cargo.toml at compile time
+///
+/// # Examples
+///
+/// ```no_run
+/// # #[macro_use]
+/// # extern crate clap;
+/// # use clap::App;
+/// # fn main() {
+///     let m = App::new("app")
+///                 .about(crate_description!())
+///                 .get_matches();
+/// # }
+/// ```
+#[cfg(not(feature="no_cargo"))]
+#[macro_export]
+macro_rules! crate_description {
+    () => {
+        env!("CARGO_PKG_DESCRIPTION")
+    };
+}
 /// Build `App`, `Arg`s, `SubCommand`s and `Group`s with Usage-string like input
 /// but without the parsing.
 #[macro_export]
